@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		System.out.println("enter the no of elements");
+		int arrLength = scan.nextInt(),container=0;
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		for(int i=0;i<arrLength;i++)
+		{
+		    System.out.println("enter the elements in "+i+"th index : ");
+		    container=scan.nextInt();
+		    list.add(container);
+		}
+		System.out.println("before interchanging : "+list);
+		int indexStart=1,iter;
+		if(arrLength%2==0)
+		    iter=(arrLength+1)/2;
+		else
+		    iter=(arrLength-1)/2;
+		for(int j=0 ;j<iter;j++,indexStart+=2)
+		{
+		    Collections.swap(list, indexStart, indexStart-1);
+		}		
+		System.out.println("after interchange :"+list);
+	}
+}
