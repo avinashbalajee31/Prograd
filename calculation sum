@@ -1,0 +1,111 @@
+import java.util.Scanner;
+class checklen
+{
+    int chlen(String in){
+        try
+        {
+            if(in.length()<3)
+                throw new Exception();
+            else
+                return 1;
+        } catch(Exception e)
+        {
+            System.out.println("you missed either the operands or operator");
+            return 0;
+        }
+    }
+}
+class checkop
+{
+    int chop(String in){
+        try
+        {
+            char[] ch = new char[5];
+            for(int i=0;i<in.length();i++)
+            {
+                ch[i]=in.charAt(i);
+            }
+            if((ch[0]<=57&&ch[0]>=48)&&(ch[2]<=57&&ch[2]>=48)){return 1;}
+            else
+                throw new Exception();
+        } catch(Exception e)
+        {
+            System.out.println("You missed placed the operand with a operator");
+            return 0;
+        }
+    }
+}
+class checkops
+{
+    int chops(String in){
+        try
+        {
+            char[] ch = new char[5];
+            for(int i=0;i<in.length();i++)
+            {
+                ch[i]=in.charAt(i);
+            }
+            if(ch[1]==42||ch[1]==43||ch[1]==45||ch[1]==47){return 1;}
+            else
+                throw new Exception();
+        } catch(Exception e)
+        {
+            System.out.println("You missed placed the operator with some others");
+            return 0;
+        }
+    }
+}
+class ans
+{
+    int result(String in)
+    {
+        int[] ch = new int[5];
+        char ch1=0;
+        char change=0;
+        for(int i=0;i<in.length();i++)
+        {   if((i%2)==0){
+                ch[i]=Character.getNumericValue(in.charAt(i));
+            }
+            else
+            {
+                ch1=in.charAt(i);
+            }
+        }
+        if(ch1=='*'){
+           // System.out.println("* working");
+        return ch[0]*ch[2];
+        }
+        else if(ch1=='+')
+        {
+            return ch[0]+ch[2];
+            }
+        else if(ch1=='-')
+        {
+            return ch[0]-ch[2];
+            }
+        else if(ch1=='/')
+        {
+            return ch[0]/ch[2];
+            }
+        else
+            return 0;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		checklen ob = new checklen();
+		checkop ob1=new checkop();
+		checkops ob2=new checkops();
+		ans ob3=new ans();
+		String input=sc.nextLine();
+		int a=ob.chlen(input);
+		int b=ob1.chop(input);
+		int c=ob2.chops(input);
+		if(a==1)
+		{if(b==1){if(c==1){
+		  System.out.println(ob3.result(input));  }}
+		}
+	}
+}
