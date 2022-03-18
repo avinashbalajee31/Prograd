@@ -1,0 +1,64 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.util.Scanner;
+class student_detail
+{
+    public int student_id;
+    public String student_name;
+    public int student_grade;
+    public String student_batch;
+    student_detail(int student_id,String student_name,int student_grade,String student_batch)
+    {
+        this.student_id=student_id;
+        this.student_name=student_name;
+        this.student_grade=student_grade;
+        this.student_batch=student_batch;
+    }
+}
+class fcreation{
+    public void file_creation(String fname)
+    {
+        try {
+            File student_file = new File(fname+".txt");
+            if (student_file.createNewFile()) {
+                System.out.println("File has been created in the name : "+ student_file.getName());
+            }
+            else {
+                System.out.println("File already exist in the name : ");
+            }
+        }
+        catch (IOException e) {
+            System.out.println("An error has occurred while creatin a file try again :) ");
+        }
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	   
+	    fcreation funcall=new fcreation();
+	    Scanner sc=new Scanner(System.in);
+	    System.out.println("Enter the name of the file");
+	    String fname=sc.nextLine();
+	    System.out.println("enter the number of student's detail you want to enter in the file");
+	    int num=sc.nextInt();
+	    student_detail[] arr=new student_detail[num];
+	    int id;
+        String name;
+        int grade;
+        String batch;
+	    for(int i=0;i<num;i++)
+	    {
+	        id=sc.nextInt();
+	        name=sc.next();
+	        grade=sc.nextInt();
+	        batch=sc.next();
+	        arr[i]=new student_detail(id,name,grade,batch);
+	    }
+	   
+	  
+	   funcall.file_creation(fname);
+		
+	}
+}
