@@ -1,0 +1,34 @@
+import java.util.*;
+public class Program {
+	
+	static int checkDate(String base)
+	    {
+	       HashSet<String> set=new HashSet<String>();
+	        String changable="";
+	        int count=0;
+	        for(int i=0;i<base.length();i++)
+	        {
+	            if(base.charAt(i)=='-')
+	            {
+	                count++;
+	                if(count%2==0)
+	                {
+	                    for(int j=1;j<5;j++)
+	                    {
+	                        changable+=base.charAt(i+j);
+	                    }
+	                   
+	                    set.add(changable);
+	                    changable="";
+	                }
+	            }
+	        }
+	      
+	        return set.size();
+	    }
+		public static void main(String[] args) {
+			Scanner scan=new Scanner(System.in);
+			String base=scan.next();
+			System.out.println(checkDate(base));
+		}
+}
