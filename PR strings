@@ -1,0 +1,77 @@
+package prStrings;
+
+import java.util.Scanner;
+
+public class prStrings {
+	static void checkPrstring(String str)
+	{
+		char[] arr= {'p','r'};
+		int m=0,n=1,flag=0;
+		
+		if(str.charAt(0)=='p')
+		{
+			for(int i=0;i<str.length();)
+			{
+				if(str.charAt(i)==arr[m])
+				{
+					i++;
+					if(i%2!=0)
+					{
+						m=1;
+					}
+					else {
+						m=0;
+					}
+				}
+				else
+				{
+					flag=1;
+					break;
+				}
+			}
+			if(flag==0)
+			{
+				System.out.println("perfect");
+			}
+			else if(flag==1)
+				System.out.println("invalid");
+			
+		}
+		
+		
+		else if(str.charAt(0)=='r')
+		{
+			for(int j=0;j<str.length();)
+			{
+				if(str.charAt(j)==arr[n])
+				{
+					j++;
+					if(j%2!=0)
+					{
+						n=0;
+					}
+					else {
+						n=1;
+					}
+				}
+				else
+				{
+					flag=1;
+					break;
+				}
+			}
+			if(flag==0)
+			{
+				System.out.println("perfect");
+			}
+			else if(flag==1)
+				System.out.println("invalid");
+			
+		}
+	}
+	public static void main(String[] args) {
+	Scanner scan=new Scanner(System.in);
+	String str=scan.next();
+	checkPrstring(str);
+	}
+}
