@@ -1,0 +1,45 @@
+import java.util.*;
+public class Main {
+    static boolean areAnagram(String str1, String str2)
+    {
+        HashMap<Character, Integer> map1= new HashMap<Character, Integer>();
+        HashMap<Character, Integer> map2= new HashMap<Character, Integer>();
+        char arr1[] = str1.toCharArray();
+        char arr2[] = str2.toCharArray();
+        for (int i = 0; i < arr1.length; i++) {
+            if (map1.get(arr1[i]) == null) {
+                map1.put(arr1[i], 1);
+            }
+            else {
+                Integer c = (int)map1.get(arr1[i]);
+                map1.put(arr1[i], ++c);
+            }
+        }
+        for (int j = 0; j < arr2.length; j++) {
+            if (map2.get(arr2[j]) == null)
+                map2.put(arr2[j], 1);
+            else {
+                Integer d = (int)map2.get(arr2[j]);
+                map2.put(arr2[j], ++d);
+            }
+        }
+        if (map1.equals(map2))
+            return true;
+        else
+            return false;
+    }
+    public static void main(String args[])
+    {
+        Scanner scan=new Scanner(System.in);
+        System.out.println("enter the base string : ");
+         String base = scan.nextLine();
+         String changable;
+         System.out.println("enter the no of string to be tested with base string : ");
+         int num=scan.nextInt();
+         for(int i=0;i<num;i++)
+         {
+             changable=scan.next();
+             System.out.println(areAnagram(base, changable));
+         }
+    }
+}
