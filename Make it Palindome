@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Palindrome {
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String str=sc.next();
+		String change="";
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			change+=str.charAt(i);
+		}
+		if(change!=str)
+			makePalindrome(str,change,str.length()-1);
+			
+	}
+	public static void makePalindrome(String str, String change,int len) {
+		if(len>=0) {
+		String hand=str;
+		String handrev="";
+		char[] arr=change.toCharArray();
+			for(int i=len;i<=str.length()-1;i++) {
+			hand+=arr[i];
+			}
+			//System.out.println(hand);
+			for(int j=hand.length()-1;j>=0;j--)
+			{
+				handrev+=hand.charAt(j);
+			}
+			
+			if(handrev.equals(hand))
+			{
+				System.out.println(hand);
+			}
+			else
+			{
+				makePalindrome(str,change,len-1);
+			}
+		}
+	}
+}
