@@ -1,0 +1,52 @@
+import java.util.*;
+public class Brackets
+{
+    public static void balanceBracket(String input){
+    Stack<Character> stack = new Stack<Character>();
+    for(int i=0;i<input.length();i++){
+    char character = input.charAt(i);
+    
+    if(character=='['|| character=='{'||character=='('||character=='<'){
+        stack.push(character);
+    }
+    else if(character==']'||character=='}'||character==')'||character=='>'){
+    	if(character==']')
+    		stack.remove('[');
+    	else if(character=='}')
+            stack.remove('{');
+    	else if(character==')')
+            stack.remove('(');
+    	else if(character=='>')
+            stack.remove('<');
+    	
+    }
+}
+
+if(stack.isEmpty()){
+    System.out.println("VALID");
+}
+else{
+    
+        System.out.println(stack);
+        if(stack.contains('('))
+        input= input+')' ;
+    
+        if(stack.contains('{'))
+        input= input+'}' ;
+    
+        if(stack.contains('['))
+        input= input+']' ;
+        
+        if(stack.contains('<'))
+        input= input+'>';
+    
+    System.out.println(input);
+    
+    }
+}
+	public static void main(String[] args) {
+		Scanner scan=new Scanner (System.in);
+		String input=scan.next();
+		balanceBracket(input);
+	}
+}
