@@ -1,0 +1,23 @@
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.*;
+
+
+public class TestIpAddress {
+	@Test
+	public void falseTest()
+	{
+		IP obj=new IP();
+		assertFalse(obj.ValidateIpv4Address("0.0.0.0"));
+		assertFalse(obj.ValidateIpv4Address("255.255.255.255"));
+		assertFalse(obj.ValidateIpv4Address("1111"));
+	}
+	@Test
+	public void TrueTest()
+	{
+		IP obj=new IP();
+		assertTrue(obj.ValidateIpv4Address("1.1.1.1"));
+		assertTrue(obj.ValidateIpv4Address("192.168.1.1"));
+	}
+}
