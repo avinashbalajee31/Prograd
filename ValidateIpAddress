@@ -1,0 +1,33 @@
+import java.util.*;
+class IP{
+	public boolean ValidateIpv4Address(String str){
+		 String[] arrOfStr = str.split("[.]", 4);
+		 //System.out.println(arrOfStr[3]);
+		 if(arrOfStr.length!=4)
+		 {
+			 return false;
+		 }
+		 for (String a : arrOfStr)
+		 {
+			 int b=Integer.parseInt(a);
+			 if(!(b>0&&b<255))
+			 {
+				 return false;
+			 }
+		 }
+		 if(arrOfStr[3].equals("255")||arrOfStr[3].equals("0"))
+		 {
+			 return false;
+		 }
+		 else
+			 return true;
+	}
+}
+public class IpAddress {
+	public static void main(String[] args) {
+		Scanner scan=new Scanner (System.in);
+		String Address=scan.next();
+		IP obj=new IP();
+		System.out.println(obj.ValidateIpv4Address(Address));
+	}
+}
